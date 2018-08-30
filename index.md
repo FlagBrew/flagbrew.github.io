@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 {% assign sorted_repositories = site.github.public_repositories | sort: "stargazers_count" | reverse %}
 {% for repository in sorted_repositories %}
