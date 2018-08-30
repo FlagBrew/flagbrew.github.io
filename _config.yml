@@ -29,7 +29,6 @@ theme: jekyll-theme-minimal
 repository: flagbrew/flagbrew.github.io
 plugins:
   - jekyll-feed
-  - jekyll-github-metadata
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
