@@ -63,15 +63,15 @@ function setDialog(){
 }
 
 
-function getStuff(){
+function loadProjects(){
         let projects = $("#projects")
         if(projects){
             // loop through projects
             projects.find('div').each(function(i, project){
                 getData(project.id.replace("project-", ""))
             })
+            setDialog()
         }
-        setDialog()
     }
 
-getStuff()
+loadProjects()
