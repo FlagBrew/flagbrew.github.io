@@ -7,7 +7,7 @@ layout: default
   {% if repository.fork == false %}
   {% unless repository.name == "EventsGalleryPacker" or repository.name == "flagbrew.github.io" %}
   <div id="project-{{repository.name}}">
-  <h2><a href="{{repository.html_url}}">{{repository.name}}</a> <img src="https://img.shields.io/github/downloads/FlagBrew/{{repository.name}}/total.svg"> <img src="https://imgit g.shields.io/github/stars/FlagBrew/{{repository.name}}.svg"></h2>
+  <h2><a href="{{repository.html_url}}">{{repository.name}}</a> <img src="https://img.shields.io/github/downloads/FlagBrew/{{repository.name}}/total.svg"> <img src="https://img.shields.io/github/stars/FlagBrew/{{repository.name}}.svg"></h2>
   {% if repository.description %}
   <h3>{{repository.description}}</h3>
   {% else %}
