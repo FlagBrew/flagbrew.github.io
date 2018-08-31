@@ -38,8 +38,8 @@ function qrCodeGoogleApi(link) {
         for (var i in data[0]["assets"]) {
           let asset = data[0]["assets"][i];
           $("#latest{{repository.name}}").append('<li><b><a href="' + asset.browser_download_url + '">' + asset.name + '</a></b>'
-          + (asset.name.endsWith(".cia") ? '<b><a href="' + qrCodeGoogleApi(asset.browser_download_url) + '"> [QR] </a></b>' : '')
-          + '(' + fileSize(asset.size) + ')'
+          + (asset.name.endsWith(".cia") ? '<b><a href="' + qrCodeGoogleApi(asset.browser_download_url) + '"> [QR]</a></b>' : '')
+          + ' (' + fileSize(asset.size) + ')'
           + '</li>'
           + 'Downloaded <b>' + asset.download_count + '</b> times</p>');
         }
