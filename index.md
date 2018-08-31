@@ -24,7 +24,7 @@ layout: default
       if ($.isArray(data) && data.length) {
         for (var i in data[0]["assets"]) {
           let asset = data[0]["assets"][i];
-          $("#latest{{repository.name}}").append('<li><a href="{{asset.browser_download_url}}">{{asset.name}}</a></li>');
+          $("#latest{{repository.name}}").append('<li><a href="'+ asset.browser_download_url + '">' + asset.name + '</a></li>');
         }
       }
     });
