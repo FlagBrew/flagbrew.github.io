@@ -21,8 +21,9 @@ function getData(repo){
   
           for (var i in data[0]["assets"]) {
             let asset = data[0]["assets"][i];
-            $("#latest" + repo).append('<li><b><a href="' + asset.browser_download_url + '">' + asset.name + '</a></b>'
-            + (asset.name.endsWith(".cia") ? ' <button id="qr-' + repo + '">Click for QR</button>' : '')
+            $("#latest" + repo).append('<li>'
+            + (asset.name.endsWith(".cia") ? ' <button id="qr-' + repo + '"><i class="fas fa-qrcode fa-2x"></i></button> ' : '')
+            + '<b><a href="' + asset.browser_download_url + '">' + asset.name + '</a></b>'
             + '(' + fileSize(asset.size) + ')'
             + '</li>'
             + 'Downloaded <b>' + asset.download_count + '</b> times</p>');
