@@ -57,7 +57,7 @@ function loadProjects(){
                 getData(project.id.replace("project-", ""))
             })
     }
-if($("#projects")){
+if($("#projects").length > 0){
     loadProjects()
 }
 
@@ -72,14 +72,28 @@ function projectInfo(){
     // set the title
     document.title = project + " | FlagBrew"
     // clear the placeholder stuff
-    let content = $("#content")
+    let content = $("#project-content")
     content.empty()
     content.append("<h1>"
     + project 
     + "</h1>"
-    + "<a href ='https://github.com/flagbrew/"+ project +"'>View on github!</a>")
+    + '<img src="https://img.shields.io/github/downloads/FlagBrew/'+ project +'/total.svg"> '
+    + '<img src="https://img.shields.io/github/stars/FlagBrew/' + project + '.svg">'
+    + '<br />'
+    + "<a href ='https://github.com/flagbrew/"+ project +"'>View on github!</a><hr />")
+    // Next we need to get some repo data
+    // TODO: Handle release data on the project page.
+    // $.getJSON("https://api.github.com/repos/FlagBrew/"+ project +"/releases", function (data) {
+
+    // });
+    // Now we need to get the README data from github
+    $.getJSON("https://api.github.com/repos/FlagBrew/" + project +"/readme", function (data) {
+        let converter = new showdown.Converter()
+        content.append(converter.makeHtml(window.atob(data.content)))
+      });
+
 }
 
-if ($("#content")){
+if ($("#project-content").length > 0){
     projectInfo()
 }
