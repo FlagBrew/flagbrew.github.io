@@ -52,13 +52,34 @@ function getData(repo){
 
 
 function loadProjects(){
-        let projects = $("#projects")
-        if(projects){
             // loop through projects
-            projects.find('div').each(function(i, project){
+            $("#projects").find('div').each(function(i, project){
                 getData(project.id.replace("project-", ""))
             })
-        }
     }
+if($("#projects")){
+    loadProjects()
+}
 
-loadProjects()
+
+function projectInfo(){
+    let params = (new URL(location)).searchParams;
+    let project = params.get('p');
+    // if no project is specified, redirect back to the homepage
+    if (project == ""){
+        window.location.replace("/");
+    }
+    // set the title
+    document.title = project + " | FlagBrew"
+    // clear the placeholder stuff
+    let content = $("#content")
+    content.empty()
+    content.append("<h1>"
+    + project 
+    + "</h1>"
+    + "<a href ='https://github.com/flagbrew/"+ project +"'>View on github!</a>")
+}
+
+if ($("#content")){
+    projectInfo()
+}
