@@ -4,7 +4,7 @@ function fileSize(size) {
 };
 
 function qrCodeGoogleApi(link) {
-  return "<img src='https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl="+ link + "&choe=UTF-8.png'>";
+  return "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl="+ link + "&choe=UTF-8.png";
 }
 
 
@@ -31,11 +31,13 @@ function getData(repo){
             // if we have a cia, we need to attach an onclick listener
             if(asset.name.endsWith(".cia")){
                 $("#qr-" + repo).click(function(){
-                    // close existing modal
-                    $("#qr").dialog("close")
-                    $("#qr").empty()
-                    $("#qr").append("<p>Scan this QR Code with QRaken<br/>" +
-                    "This will install " + repo + "</p>" + qrCodeGoogleApi(asset.browser_download_url)).dialog("open")
+                    swal({
+                        title: repo,
+                        text: 'Scan the QR Code with QRaken to install!',
+                        imageUrl: qrCodeGoogleApi(asset.browser_download_url),
+                        imageAlt: repo + " QR Code",
+                        animation: true
+                      })
                 })
             }
           }
@@ -48,21 +50,6 @@ function getData(repo){
       });
 }
 
-function setDialog(){
-    $( "#qr" ).dialog({
-        autoOpen: false,
-        title: "QR Code",
-        show: {
-          effect: "blind",
-          duration: 500
-        },
-        hide: {
-          effect: "explode",
-          duration: 500
-        }
-      });
-}
-
 
 function loadProjects(){
         let projects = $("#projects")
@@ -71,7 +58,6 @@ function loadProjects(){
             projects.find('div').each(function(i, project){
                 getData(project.id.replace("project-", ""))
             })
-            setDialog()
         }
     }
 

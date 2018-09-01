@@ -29,5 +29,3 @@ layout: default
   {% endif %}
 {% endfor %}
 </div>
-
-<div id="qr"></div>
