@@ -88,7 +88,7 @@ function projectInfo(){
     // });
     // Now we need to get the README data from github
     $.getJSON("https://api.github.com/repos/FlagBrew/" + project +"/readme", function (data) {
-        let converter = new showdown.Converter()
+        let converter = new showdown.Converter({tables: true})
         content.append(converter.makeHtml(window.atob(data.content)))
       });
 
