@@ -8,13 +8,12 @@ function qrCodeGoogleApi(link) {
 }
 
 
-function getData(repo){
-
+function getData(repo) {
     $.getJSON("https://api.github.com/repos/FlagBrew/" + repo +"/readme", function (data) {
         $("#readme"+ repo +"Id").attr("href", data['_links']['html'])
       });
 
-    $.getJSON("https://api.github.com/repos/FlagBrew/"+ repo +"/releases", function (data) {
+    $.getJSON("https://api.github.com/repos/FlagBrew/" + repo +"/releases", function (data) {
         if ($.isArray(data) && data.length) {
           // release title
           document.getElementById("latestVersion" + repo).innerHTML = "Latest release: " + data[0].tag_name + " (" + data[0].published_at.substring(0, 10) + ")";
@@ -22,9 +21,9 @@ function getData(repo){
           for (var i in data[0]["assets"]) {
             let asset = data[0]["assets"][i];
             $("#latest" + repo).append('<li>'
-            + (asset.name.endsWith(".cia") ? ' <button id="qr-' + repo + '"><i class="fas fa-qrcode fa-2x"></i></button> ' : '')
             + '<b><a href="' + asset.browser_download_url + '">' + asset.name + '</a></b>'
-            + '(' + fileSize(asset.size) + ')'
+            + ' (' + fileSize(asset.size) + ')'
+            + (asset.name.endsWith(".cia") ? ' <button id="qr-' + repo + '"><i class="fas fa-qrcode fa-2x"></i></button> ' : '')
             + '</li>'
             + 'Downloaded <b>' + asset.download_count + '</b> times</p>');
 
@@ -51,18 +50,17 @@ function getData(repo){
 }
 
 
-function loadProjects(){
-            // loop through projects
-            $("#projects").find('div').each(function(i, project){
-                getData(project.id.replace("project-", ""))
-            })
-    }
-if($("#projects").length > 0){
-    loadProjects()
+function loadProjects() {
+    // loop through projects
+    $("#projects").find('div').each(function(i, project){
+        getData(project.id.replace("project-", ""))
+    })
+}
+if ($("#projects").length > 0) {
+    loadProjects();
 }
 
-
-function projectInfo(){
+function projectInfo() {
     let params = (new URL(location)).searchParams;
     let project = params.get('p');
     // if no project is specified, redirect back to the homepage
@@ -95,5 +93,5 @@ function projectInfo(){
 }
 
 if ($("#project-content").length > 0){
-    projectInfo()
+    projectInfo();
 }
