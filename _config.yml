@@ -25,7 +25,6 @@ logo: "https://github.com/flagbrew.png"
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
 repository: flagbrew/flagbrew.github.io
 plugins:
   - jekyll-feed
