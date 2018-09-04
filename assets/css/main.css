@@ -1,3 +1,5 @@
 body {
 	background-image: url("/assets/img/stripes-light.png");
 }
+
+.jumbotron { padding: 2rem }
