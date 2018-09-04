@@ -23,15 +23,23 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-                {% if site.logo %}
-                <a href="/"><img src="{{site.logo | relative_url}}" style="display: inline;" width="25%" alt="Logo" /></a> {% endif %}
-            <h1 style="display: inline;" class="display-4">Welcome to <a href="/">FlagBrew</a></h1>
-            <p class="lead">{{ site.description | default: site.github.project_tagline }}</p>
-            <hr class="my-4">
-            <p id="page-info"></p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="{{ site.github.owner_url }}" role="button">Visit Us on <i class="fab fa-github"></i> Github!</a>
-            </p>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if site.logo %}
+                    <a href="/"><img src="{{site.logo | relative_url}}" width="100%" alt="Logo"/></a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <h1 class="display-4"><a href="/">FlagBrew</a></h1>
+                    <p class="lead" style="margin-left: 2px;">{{ site.description | default: site.github.project_tagline }}</p>
+                    <hr class="my-4">
+                    <p style="margin-left: 2px;">
+                        <a class="btn btn-primary btn-lg" href="{{ site.github.owner_url }}" role="button"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-primary btn-lg" href="https://discord.gg/bGKEyfY" role="button"><i class="fab fa-discord"></i></a>
+                        <a class="btn btn-primary btn-lg" href="mailto:flagbrewinfo@gmail.com" role="button"><i class="fas fa-envelope"></i></a>
+                    </p>
+                </div>
+            </div>
         </div>
         {{ content }}
     </div>

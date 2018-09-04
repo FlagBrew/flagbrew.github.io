@@ -8,7 +8,7 @@ layout: default
     == "flagbrew.github.io" or repository.name == "CacheBox" %}
     <div class="col-md-4 d-flex align-items-stretch">
         <!-- Start of column -->
-        <div class="card" id="project-{{repository.name}}" style="margin-bottom: 1rem;">
+        <div class="card" id="project-{{repository.name}}" style="margin-bottom: 1rem; width: 25rem;">
             <!-- Start of card -->
             <div class="card-body">
                 <!-- Start of card body -->
@@ -29,8 +29,6 @@ layout: default
                         <b>Language:</b> {{repository.language}}</li>
                     <li class="list-group-item">
                         <b>License:</b> {{repository.license.name}}</li>
-                    <li class="list-group-item">
-                        <b>Last updated:</b> {{repository.updated_at}}</li>
                     <li class="list-group-item">
                         <b style="cursor: pointer;" data-toggle="collapse" data-target="#versionShow-{{repository.name}}" aria-expanded="false" aria-controls="versionShow-{{repository.name}}">Latest
                             Version <i class="fas fa-chevron-down"></i></b>
