@@ -57,6 +57,18 @@ function getData(repo) {
     })
 }
 
+function loadMemberData() {
+    $.getJSON(cacheServer + "/api/members/", function(data) {
+        for (var i in data) {
+            $("#bio" + data[i]['data']['login']).text(data[i]['data']['bio']);
+            $("#github" + data[i]['data']['login']).attr("href", data[i]['data']['html_url']);
+        }
+    });
+}
+if ($("#cardsAbout").length > 0) {
+    loadMemberData()
+}
+
 function loadProjects() {
     // loop through projects
     $("div[id*='project-']").each(function(i, project) {

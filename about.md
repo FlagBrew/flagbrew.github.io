@@ -4,8 +4,15 @@ title: About
 permalink: /about/
 ---
 
-<h2>FlagBrew is</h2>
-
-{% for contributor in site.github.organization_members %}
-  <img id="{{contributor.login}}" src = "{{contributor.avatar_url}}" width="120" height="120">
-{% endfor %}
+<div id="cardsAbout" class="card-columns">
+  {% for contributor in site.github.organization_members %}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{contributor.avatar_url}}" alt="{{contributor.login}}">
+      <div class="card-body">
+        <h5 class="card-title">{{contributor.login}}</h5>
+        <p id="bio{{contributor.login}}" class="card-text"></p>
+        <a id="github{{contributor.login}}" href="#" class="btn btn-primary">Github</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
